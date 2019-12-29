@@ -1,0 +1,55 @@
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>-->
+<body><style>body{background: #22ffff}p,h1{font-family: Calibri}#child{width:50%;height:50%;border-radius: 2.5px;}#jsup{background: #5aff22;border-radius:25px;}#jsdown{background: #ff2222;border-radius:25px;}#jserr{background: white;color:red;border-radius:25px;}</style>
+<!--<?phpecho "Hey"?>-->
+<script>
+host = "192.168.178.2"
+port = ":22"
+/*
+request=new Request("ssh://"+host);
+console.log(request.url)
+fetch(request).then(response => response())
+console.log(response)
+*/
+conn=true;err=false;
+
+
+var xhr = new XMLHttpRequest();
+function callback(xhr)
+{
+    xmlDoc = xhr.responseXML;
+    // further XML processing here
+}
+var xmlhttp;
+
+if (window.XMLHttpRequest)
+{
+    xmlhttp = new XMLHttpRequest();
+}
+else
+{
+    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+}
+
+xmlhttp.open("GET", "http://yakupguezel.de/", true);
+
+xmlhttp.onreadystatechange = function ()
+{
+    if (xmlhttp.readyState != 4) return;
+    if (xmlhttp.status != 200 && xmlhttp.status != 304) return;
+    callback(xmlhttp);
+};
+
+xmlhttp.send(null);
+alert(xhr.status);
+
+
+//document.write("<img src="google.de">ALT</img>");
+
+green='<center><h1 id="jsup">Quick Status: All systems are up</h1></center>';red='<center><h1 id="jsdown">Quick Status: All systems are down</h1></center>';errr='<center><h1 id="jserr">Quick Status: An unknown error has occured</h1></center>'
+if (conn==true&&err==false){document.write(green)}else if(conn!=true&&err==false){document.write(red)}else if(err==true){document.write(errr)}
+</script>
+<damn style="display: flex;flex-wrap: wrap;;width:auto;height:87.5vh;">
+<topleft id="child" style="background:#f50;color:white;order: 0;"><center><h1>Manage Servers</h1><br><p>Switch to Server 1/2/3</p></center></topleft>
+<topright id="child" style="background:yellow;order: 1;"><center><h1>Server status</h1><br><p>CPU Usage: %</p><p>Free RAM:</p><p>Load Average:</p><p>Network: kb/s</p><p>Disk Usage: %</p></center></topright>
+<bottomright id="child" style="background:#5a1122;color:white;order: 2;"><center><h1>Note</h1><br><p>Login needs to be added via php</p></center></bottomright>
+<bottomleft id="child" style="background:#22aaaa;color:white;order: 3;"><center><h1>Billing system</h1><br><p>$5 per year</p></center></bottomleft></damn></body>
